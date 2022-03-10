@@ -1,0 +1,295 @@
+<head>
+    <title>DemeterFi dApp</title>
+    <link rel="stylesheet" href="styles.css"></link>
+    <link rel="icon" type="image/x-icon" href="assets/demeter.png">
+</head>
+
+<body>
+
+    <img src="assets/demeter.png" style="transform: rotate(40deg); position: absolute; left: -100px; top: 390px; width: 350px">
+
+    <img id="mainLogo" src="assets/demeter_full.png" onclick="goToDiscord()">
+
+    <button id="walletCircle">
+        <img id="walletImage" src="assets/walletcircle.png">
+    </button>
+    <div id="usersWallet">Not Connected</div>
+
+    <div id="menuDiv" style="display: block">
+
+        <button id="btn_menu" class="menuButton menuButton_clickable">
+            <img src="assets/home.png" class="menuImage" style="width:28px">
+            <h2 class="menuText">Dashboard</h2>
+        </button>
+
+        <button id="btn_account" class="menuButton menuButton_clickable">
+            <img src="assets/account.png" class="menuImage">
+            <h2 class="menuText">Account</h2>
+        </button>
+
+        <button id="btn_calc" class="menuButton menuButton_clickable">
+            <img src="assets/calculator.png" class="menuImage">
+            <h2 class="menuText">Calculator</h2>
+        </button>
+
+        <button id="btn_docs" class="menuButton menuButton_clickable">
+            <img src="assets/demeter.png" class="menuImage">
+            <h2 class="menuText">Docs</h2>
+        </button>
+        
+    </div>
+
+    <div id="pairAddressBlock">
+        <h6 class="pairAddress">$DMTR:&nbsp
+            <a id="pair" class="pairHref" href="https://bscscan.com/token/0x78618c5114Cf2B71A3fe0Af9d7c5aEb129E90487" target="_blank" rel="noopener noreferrer">
+                0x000...000
+            </a>
+        </h6> 
+        <button class="copySquare"  id="copyToken">
+            <img src="assets/copy.png" class="copyImage" id="tokenClipboard">
+            <img src="assets/tick.png" class="copyImageTick" id="tokenTick">
+        </button>
+
+        <h6 class="pairAddress">Pair:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a id="pair" class="pairHref" href="https://bscscan.com/address/0x30D85Bb8b68B3425F7f3433fc2b1596CA873da89" target="_blank" rel="noopener noreferrer">
+                0x000...000
+            </a>
+        </h6>
+        <button class="copySquare"  id="copyPair">
+            <img src="assets/copy.png" class="copyImage" id="pairClipboard">
+            <img src="assets/tick.png" class="copyImageTick" id="pairTick">
+        </button>
+        
+    </div>
+
+    <div id="homepage">
+        <img src="assets/demeter.png" style="transform: rotate(-40deg); position: absolute; right: 50px; top: 700px; width: 200px">
+
+        <table class="statTable fullWidth" style="border-top: 14px solid var(--pageBg)";
+        >
+
+            <tr>
+                <td> 
+                    <h4>Market Cap</h4>
+                    <h3 id="marketCap">0</h3>
+                </td>
+
+                <td>
+                    <h4>Demeter Price</h4>
+                    <h3 id="tokenPrice">$0.00</h3>
+                </td>
+
+                <td>
+                    <h4>Next Rebase</h4>
+                    <h3 class="rebaseCountdown">00:30:00</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h4>Circulating Supply</h4>
+                    <h3 id="circulatingSupply">100,000,000</h3>
+                </td>
+
+                <td>
+                    <h4>Backed Liquidity</h4>
+                    <h3>100%</h3>
+                </td>
+
+                <td>
+                   <!-- <h4>LF</h4>
+                    <h3>G</h3>-->
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="statTable" id="treasuryValueBlock">
+            <h4>Treasury Value</h4>
+            <h3 id="treasuryValue">0</h3>
+        </div>
+
+        <div class="statTable" id="poolValueBlock">
+            <h4>Pool Value</h4>
+            <h3 id="poolValue">$0.00</h3>
+        </div>
+
+        <div class="statTable" id="leftThirdBlock">
+            <h4>Tokens in FirePit</h4>
+            <h3 id="firePitBalance">0</h3>
+        </div>
+
+        <div class="statTable" id="middleThirdBlock">
+            <h4>$ Value of FirePit</h4>
+            <h3 id="firePitValue">$0.00</h3>
+        </div>
+
+        <div class="statTable" id="rightThirdBlock">
+            <h4>% of Supply in FirePit</h4>
+            <h3 id="percentFirePit">0%</h3>
+        </div>
+
+    </div>
+
+
+    <!-- ACCOUNT -->
+    <div id="account" style="display: none;">
+
+        <table class="statTable centralWidth">
+
+            <tr>
+                <td> 
+                    <h4>Your Balance</h4>
+                    <h3 id="yourBalance">0</h3>
+                    <h5>$DMTR</h5>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <h4>APY</h4>
+                    <h3 id="apy">383,025.8%</h3>
+                    <h5>Daily ROI 2.28%</h5>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <h4>Next Rebase</h4>
+                    <h3 class="rebaseCountdown">00:30:00</h3>
+                </td>
+            </tr>
+        </table>
+
+        <table class="statTable centralWidth" style="position: absolute; top: 520px;">
+
+            <tr class="listRow">
+                <td class="listLeft"> 
+                    <h4>Current Demeter Price</h4>
+                </td>
+                <td class="listRight">
+                    <h3 id="accountPrice">10000</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="listLeft"> 
+                    <h4>Next Reward Amount</h4>
+                </td>
+                <td class="listRight">
+                    <h3>0 DMTR</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="listLeft"> 
+                    <h4>Next Reward Amount USD</h4>
+                </td>
+                <td class="listRight">
+                    <h3>$0.00</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="listLeft"> 
+                    <h4>Next Reward Yield</h4>
+                </td>
+                <td class="listRight">
+                    <h3>$0.00</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="listLeft"> 
+                    <h4>ROI (1-day-rate) USD</h4>
+                </td>
+                <td class="listRight">
+                    <h3>$0.00</h3>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="listLeft"> 
+                    <h4>ROI (5-day-rate)</h4>
+                </td>
+                <td class="listRight">
+                    <h3>ROI (5-day-rate) USD</h3>
+                </td>
+            </tr>
+
+        </table>
+
+      
+
+    </div>
+ 
+
+    <!-- CALCULATOR-->
+    <div id="calculator" style="display: none;">
+       
+        <table class="statTable fullWidth">
+            <tr>
+                <td> 
+                    <h4>Demeter Price</h4>
+                    <h3 id="calcPrice">0</h3>
+                    <h5></h5>
+                </td>
+                <td> 
+                    <h4>Current APY</h4>
+                    <h3 id="calcAPY">0</h3>
+                    <h5></h5>
+                </td>
+                <td style="padding-top: 10px"> 
+                    <h4>Your Balance</h4>
+                    <h3 id="calcBalance">0</h3>
+                </td>
+            </tr>
+        </table>
+
+        <div class="inputBlock left" id="tokenAmountBlock">
+            <h5 class="inputLabel">Demeter Amount</h5>
+            <input class="stakeInput" id="tokenAmountInput" placeholder="0" value="0" oninput="updateSlider(-1)">
+                <button class="maxCalc" id="maxSafuuAmount" onclick="maxAmount()"> MAX </button> 
+         </input>
+        </div>
+
+        <div class="inputBlock right" id="APYBlock">
+            <h5 class="inputLabel">APY (%)</h5>
+            <input class="stakeInput" id="apyInput" placeholder="0" value="383025.8" oninput="updateSlider(-1)">
+                <button class="maxCalc" id="maxSafuuAmount" onclick="currentAPY()"> CURRENT </button> 
+            </input>
+        </div>
+
+        <div class="inputBlock left" id="tokenPricePurchaseBlock">
+            <h5 class="inputLabel">Demeter Price at Purchase ($)</h5>
+            <input class="stakeInput" id="tokenPriceInput" placeholder="0" value="0.0"  oninput="updateSlider(-1)">
+                <button class="maxCalc" id="maxSafuuAmount" onclick="currentPrice()"> CURRENT </button> 
+            </input>
+        </div>
+
+        <div class="inputBlock right" id="tokenPriceFutureBlock">
+            <h5 class="inputLabel">Future Demeter Price ($)</h5>
+            <input class="stakeInput" id="tokenPriceFutureInput" placeholder="0" value="0.0" oninput="updateSlider(-1)">
+                <button class="maxCalc" id="maxSafuuAmount" onclick="currentFuture()"> CURRENT </button> 
+            </input>
+        </div>
+
+        <div class="slidecontainer">
+            <h2 id="selectedRange">1 day</h2>
+            <input type="range" min="1" max="100" value="1" class="slider" id="myRange" oninput="updateSlider(this.value)">
+        </input> 
+            <h4 class="calc_left" style="top:80px">Your Initial Investment ($)</h4>
+            <h4 class="calc_right" style="top:80px" id="calc_initial">$0.00</h4>
+
+            <h4 class="calc_left" style="top: 120px">$DMTR Rewards Estimation</h4>
+            <h4 class="calc_right" style="top: 120px" id="calc_rewards">0</h4>
+
+            <h4 class="calc_left" style="top: 160px">Potential Return ($)</h4>
+            <h4 class="calc_right" style="top: 160px" id="calc_return">$0.00</h4>
+
+          </div>
+
+    </div>
+    <!-- <script src="obcss.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="genericDapp.js"></script>
+</body>
